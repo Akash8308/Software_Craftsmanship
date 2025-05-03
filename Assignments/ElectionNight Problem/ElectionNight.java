@@ -55,10 +55,6 @@ public class ElectionNight {
         String constituency = parts[0];
         String[] partyData = parts[1].split(",");
 
-        System.out.println(Arrays.toString(parts));
-        System.out.println(constituency);
-        System.out.println(Arrays.toString(partyData));
-
         String winningParty = "";
         int maxVotes = 0;
         int totalVotes = 0;
