@@ -11,7 +11,7 @@
 ### Classes
 - Class Book:
    - Attribute: id, title, author, price, genre (Enum), stockStatus (Enum)
-   - Behavior: get/set(),  
+   - Behavior: get/set(),  update()
 
 
 - Class Order:
