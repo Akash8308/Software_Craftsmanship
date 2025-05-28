@@ -14,18 +14,31 @@ missed deadlines, duplicated efforts, and a lack of transparency regarding proje
 
 
 ### Questions
-1. User can add cards(cards)?
+1. User can add cards(tasks)?
 2. User can Edit/Update cards(cards)?
-3. 
-
+3.
 
 ### Classes
 1. User
-   1. Attributes: id, name, position
+   1. Attributes: id, name, position, email, password
    2. Behaviors: get/set(), getCard(), craeteCards(), updateCards(),
 
-2. Dashboards
-   1. Attribute: 
+2. Dashboard
+   1. Attribute: name, card : Card, column
+   2. Behavior: getCards(), showCards(), addColumn
+
+3. Card
+   1. Attribute: id, title, Description, Status, Deadline, comments, assignedToUser
+   2. Behavior: get/set(), update(), delete(), updateStatus(), assignToUser(),
+     
+4. Column
+   1. Attribute: id, name, cards : Card, cardLimitInColumn.
+   2. Behavior: get/set(), add/update/remove cards from columns(),
+
+5. History/Activity
+   1. Attribute: id, action, dateTime, user, card
    2. Behavior: 
 
 ### Enums
+1. Status: { CREATED , NOT_SCHEDULED, IN_PROGRESS, COMPLETED, REMOVED, EXPIRED }
+2. 
