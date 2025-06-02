@@ -28,7 +28,7 @@ missed deadlines, duplicated efforts, and a lack of transparency regarding proje
    2. Behavior: getCards(), showCards(), addColumn
 
 3. Card
-   1. Attribute: id, title, Description, Status, Deadline, comments, assignedToUser
+   1. Attribute: id, title, Description, Status, Deadline, comments, assignedToUser : List <User>
    2. Behavior: get/set(), update(), delete(), updateStatus(), assignToUser(),
      
 4. Column
