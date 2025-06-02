@@ -19,32 +19,39 @@ Delivery agents should be able to accept and deliver orders.
 
 
 ### Questions
-1. 
+1. Do we need Admin?
+2. Do we need Payment method?
+3. Maintain Restauran open/closed status?
+4. User can cancel order?
 
 ### Classes
 1. Customer
-   - Attribute: id, name, email, password, mobileNumber, address
-     - Behavior: get/set(), browsRestaurant(), deleteAddress(), updateAddress(), updateEmail(), updateMobileNumber()
-                  addItemToCart(), placeOrder(), trackDelivery().
+   - Attribute: id, name, email, password, contactNumber, address
+   - Behavior: get/set(), browsRestaurant(), deleteAddress(), updateAddress(), updateEmail(), updateMobileNumber()
+               addItemToCart(), placeOrder(), trackDelivery().
+
 
 2. Restaurant:
-   - Attribute: id, name, description, email, mobileNumber, mennu : List <Items>
+   - Attribute: id, name, description, email, contactNumber, menu : List <Items>
    - Behavior: get/set(), addItemTOMenu(), removeItemFromMenu(), acceptOrder(), rejectOrder()
+
 
 3. Item
    - Attribute: id, name, description, price, serves : int
    - Behavior:get/set()
 
+
 4. DeliveryAgent
    - Attribute: id, name, mobileNumber, email
-   - Behavior: get/set(), acceptOrder(), updateStatus()
+   - Behavior: get/set(), acceptOrder(), updateStatusOnceDelivered()
+
 
 5. Cart
    - Attribute: items : <Item>, totalBill
    - Behavior: get/set(), removeItem()
 
-2. a
    - Attribute:
    - Behavior:
+   
 ### Enums
-1. Status : {ORDER_PLACED, ORDER_PREPARIN, ORDER_PICKED, ORDER_DELIVERED }
+1. Status : { ORDER_PLACED, ORDER_PREPARING, ORDER_PICKED/ORDER_ONTHEWAY, ORDER_DELIVERED }
