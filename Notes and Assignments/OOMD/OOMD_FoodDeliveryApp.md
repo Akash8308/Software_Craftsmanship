@@ -49,7 +49,10 @@ Delivery agents should be able to accept and deliver orders.
 5. Cart
    - Attribute: items : <Item>, totalBill: float
    - Behavior: get/set(), removeItem()
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3b5a880367f27e7bc2f59d9a3e369f24648c23ea
    
 ### Enums
 1. Status : { ORDER_PLACED, ORDER_PREPARING, ORDER_PICKED/ORDER_ONTHEWAY, ORDER_DELIVERED }
