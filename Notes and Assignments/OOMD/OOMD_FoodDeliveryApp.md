@@ -26,32 +26,30 @@ Delivery agents should be able to accept and deliver orders.
 
 ### Classes
 1. Customer
-   - Attribute: id, name, email, password, contactNumber, address
+   - Attribute: id: int, name: String, email : String, password: String, contactNumber: long, address: String
    - Behavior: get/set(), browsRestaurant(), deleteAddress(), updateAddress(), updateEmail(), updateMobileNumber()
                addItemToCart(), placeOrder(), trackDelivery().
 
 
 2. Restaurant:
-   - Attribute: id, name, description, email, contactNumber, menu : List <Items>
+   - Attribute: id: int, name: String, description, email : String, contactNumber: long, menu : List <Items>
    - Behavior: get/set(), addItemTOMenu(), removeItemFromMenu(), acceptOrder(), rejectOrder()
 
 
 3. Item
-   - Attribute: id, name, description, price, serves : int
+   - Attribute: id: int, name: String, description: String, price: float, serves : int
    - Behavior:get/set()
 
 
 4. DeliveryAgent
-   - Attribute: id, name, mobileNumber, email
+   - Attribute: id: int, name: String, mobileNumber, email : String
    - Behavior: get/set(), acceptOrder(), updateStatusOnceDelivered()
 
 
 5. Cart
-   - Attribute: items : <Item>, totalBill
+   - Attribute: items : <Item>, totalBill: float
    - Behavior: get/set(), removeItem()
 
-   - Attribute:
-   - Behavior:
    
 ### Enums
 1. Status : { ORDER_PLACED, ORDER_PREPARING, ORDER_PICKED/ORDER_ONTHEWAY, ORDER_DELIVERED }
