@@ -2,6 +2,7 @@ package com.sc.ddd.unusualSpends.domain.entity;
 
 import com.sc.ddd.unusualSpends.exception.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class User {
@@ -49,5 +50,10 @@ public class User {
 
     public List<String> getCard() {
         return card;
+    }
+
+    public void spend(double amount){
+//        Transaction(String id, double amount, String merchantId, String creditCardId, LocalDate timestamp)
+        
     }
 }

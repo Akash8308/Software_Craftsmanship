@@ -33,4 +33,8 @@ public class CreditCard {
     public List<String> getTransactionIds() {
         return transactionIds;
     }
+
+    public void addTransaction(String transactionId){
+        transactionIds.add(transactionId);
+    }
 }
