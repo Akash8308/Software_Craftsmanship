@@ -11,7 +11,7 @@ public class Transaction {
     private final String creditCardId;
     private final LocalDate  timestamp;
 
-    public Transaction(String id, double amount, String merchantId, String creditCardId, LocalDate  timestamp) {
+    public Transaction(String id, double amount, String merchantId, String creditCardId) {
 
         if(id == null || id.isBlank())
             throw new InvalidIdException(id);
@@ -19,8 +19,6 @@ public class Transaction {
             throw new InvalidAmountException(amount);
         if(merchantId == null || merchantId.isBlank())
             throw new InvalidNameException(merchantId);
-        if(timestamp == null)
-            throw new InvalidTimestampException(timestamp);
         if(creditCardId == null || creditCardId.isBlank())
             throw new InvalidCreditCardNumberException(creditCardId);
 
@@ -28,7 +26,7 @@ public class Transaction {
         this.amount = amount;
         this.merchantId = merchantId;
         this.creditCardId = creditCardId;
-        this.timestamp = timestamp;
+        this.timestamp = LocalDate.now();
     }
 
     public String getId() {
