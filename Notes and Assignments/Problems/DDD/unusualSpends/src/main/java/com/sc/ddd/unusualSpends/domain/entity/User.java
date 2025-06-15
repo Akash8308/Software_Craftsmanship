@@ -72,6 +72,7 @@ public class User {
     }
 
     public void spend(double amount, Merchant merch, User user){
-        Transaction tran1 = new Transaction("T101", amount, merch.id, user.getCard());
+//        Transaction tran1 = new Transaction("T101", amount, merch.id, user.getCard());
+
     }
 }

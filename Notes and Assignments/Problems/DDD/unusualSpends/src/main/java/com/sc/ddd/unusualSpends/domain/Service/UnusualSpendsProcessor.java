@@ -1,4 +1,4 @@
-package com.sc.ddd.unusualSpends.Service;
+package com.sc.ddd.unusualSpends.domain.Service;
 
 import com.sc.ddd.unusualSpends.domain.valueobject.SpendingCategory;
 

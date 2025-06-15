@@ -15,6 +15,8 @@ public class Transaction {
 
         if(id == null || id.isBlank())
             throw new InvalidIdException(id);
+        if( amount <= 0 )
+            throw new InvalidAmountException(amount);
         if(merchantId == null || merchantId.isBlank())
             throw new InvalidNameException(merchantId);
         if(timestamp == null)

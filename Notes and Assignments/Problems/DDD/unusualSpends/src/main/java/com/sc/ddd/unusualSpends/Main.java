@@ -2,10 +2,13 @@ package com.sc.ddd.unusualSpends;
 
 import com.sc.ddd.unusualSpends.domain.entity.CreditCard;
 import com.sc.ddd.unusualSpends.domain.entity.Merchant;
+import com.sc.ddd.unusualSpends.domain.entity.Transaction;
 import com.sc.ddd.unusualSpends.domain.entity.User;
 import com.sc.ddd.unusualSpends.domain.valueobject.SpendingCategory;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -28,12 +31,11 @@ public class Main {
             printMenu();
             switch (choice) {
                 case 1:
-                    user.spend(1200, merch1, user);
+                    System.out.println("Enter amount: ");
+                    double amount =scanner.nextDouble();
+                    user.spend(amount, merch1, user);
                     break;
                 case 2:
-                    createMerchant();
-                    break;
-                case 3:
                     System.out.println("Exiting. Bye!");
                     return;
                 default:
@@ -52,7 +54,6 @@ public class Main {
     private static void printMenu() {
         System.out.println("\n===== Menu =====");
         System.out.println("1. Spend");
-        System.out.println("2. Create Merchant");
         System.out.println("3. Exit");
         System.out.print("Enter your choice: ");
     }
