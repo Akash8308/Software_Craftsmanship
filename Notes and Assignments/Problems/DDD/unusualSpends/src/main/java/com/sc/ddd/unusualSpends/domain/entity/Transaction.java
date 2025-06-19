@@ -48,4 +48,8 @@ public class Transaction {
     public String getCreditCardId() {
         return creditCardId;
     }
+
+    public String getMonth() {
+        return timestamp.getMonth().toString();
+    }
 }
