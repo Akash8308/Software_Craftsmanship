@@ -1,12 +1,12 @@
 package com.sc.ddd.unusualSpends.service.Impl;
 
 import com.sc.ddd.unusualSpends.DTO.UnusualSpend;
-import com.sc.ddd.unusualSpends.service.Communicator;
+import com.sc.ddd.unusualSpends.service.Formatter;
 
 import java.util.List;
-import java.util.logging.Formatter;
 
-    public class EmailFormatter implements Formatter {
+public class EmailFormatter implements Formatter {
+
     @Override
     public String formatMessage(List<UnusualSpend> unusualSpends, String firstName) {
         StringBuilder stringBuilder =  new StringBuilder();
