@@ -21,4 +21,11 @@ public class TransactionDB {
     public void addTransaction(Transaction transaction){
         this.transactions.add(transaction);
     }
+
+    public List<Transaction> getTransactionsByMonth(String month){
+        return this.transactions
+                .stream()
+                .filter(transaction -> transaction.getMonth().equals(month))
+                .toList();
+    }
 }

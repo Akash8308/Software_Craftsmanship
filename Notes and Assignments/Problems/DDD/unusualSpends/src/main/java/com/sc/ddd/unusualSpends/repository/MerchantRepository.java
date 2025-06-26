@@ -7,11 +7,11 @@ import com.sc.ddd.unusualSpends.exception.MerchantNotFound;
 
 import java.util.List;
 
-public class MerchantRepo {
+public class MerchantRepository {
 
     private final MerchantDB merchantDB;
 
-    public MerchantRepo(MerchantDB merchantDB) {
+    public MerchantRepository(MerchantDB merchantDB) {
         this.merchantDB = merchantDB;
     }
 

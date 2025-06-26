@@ -1,12 +1,14 @@
 package com.sc.ddd.unusualSpends.repository;
 
 import com.sc.ddd.unusualSpends.database.TransactionDB;
+import com.sc.ddd.unusualSpends.domain.Service.UnusualSpendsProcessor;
 import com.sc.ddd.unusualSpends.domain.entity.Transaction;
 
 import java.util.List;
 
 public class TransactionRepository {
     private final TransactionDB transactionDB;
+    private final UnusualSpendsProcessor unusualSpendsProcessor = new UnusualSpendsProcessor();
 
     public TransactionRepository(TransactionDB transactionDB) {
         this.transactionDB = transactionDB;
@@ -14,6 +16,7 @@ public class TransactionRepository {
 
     public void addTransaction(Transaction transaction) {
         this.transactionDB.addTransaction(transaction);
+//        this.unusualSpendsProcessor.getUnusualSpending();
     }
 
     public List<Transaction> getAllTransactions() {
