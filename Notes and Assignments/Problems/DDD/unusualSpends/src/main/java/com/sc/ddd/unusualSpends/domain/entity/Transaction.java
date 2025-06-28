@@ -2,6 +2,7 @@ package com.sc.ddd.unusualSpends.domain.entity;
 import com.sc.ddd.unusualSpends.exception.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Transaction {
 
@@ -11,7 +12,7 @@ public class Transaction {
     private final String creditCardId;
     private final LocalDate  timestamp;
 
-    public Transaction(String id, double amount, String merchantId, String creditCardId) {
+    public Transaction(String id, double amount, String merchantId, String creditCardId, LocalDateTime localDateTime) {
 
         if(id == null || id.isBlank())
             throw new InvalidIdException(id);
