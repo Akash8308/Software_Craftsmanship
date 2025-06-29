@@ -10,7 +10,7 @@ public class TransactionDB {
     private final List<Transaction> transactions;
 
 
-    public TransactionDB(List<Transaction> transactions) {
+    public TransactionDB() {
         this.transactions = new ArrayList<>();
     }
 

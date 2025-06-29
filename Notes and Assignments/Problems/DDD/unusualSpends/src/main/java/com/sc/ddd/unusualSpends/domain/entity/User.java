@@ -15,16 +15,16 @@ public class User {
 
     public User(String id, String name, String email, String mobile, List<String> card) {
 
-        if(id == null || id.isBlank())
-            throw new InvalidIdException(id);
-        if(name == null || name.isBlank())
+        // if (id == null || id.isBlank())
+        // throw new InvalidIdException(id);
+        if (name == null || name.isBlank())
             throw new InvalidNameException(name);
-        if(!isValidEmail(email))
+        if (!isValidEmail(email))
             throw new InvalidEmailException(email);
-        if(!isValidMobile(mobile))
+        if (!isValidMobile(mobile))
             throw new InvalidMobileException(mobile);
-        if(card == null || card.get(0).isBlank())
-            throw new InvalidCreditCardNumberException(card.get(0));
+        if (card == null || card.isEmpty())
+            throw new InvalidCreditCardNumberException(card.toString());
 
         this.id = id;
         this.name = name;
@@ -34,12 +34,12 @@ public class User {
     }
 
     public boolean isValidEmail(String email) {
-        String EMAIL_REGEX =
-                "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
+        String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
 
         Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
 
-        if (email == null || email.isBlank()) return false;
+        if (email == null || email.isBlank())
+            return false;
         return EMAIL_PATTERN.matcher(email).matches();
     }
 
@@ -47,7 +47,8 @@ public class User {
         String MOBILE_REGEX = "^[6-9]\\d{9}$";
         Pattern MOBILE_PATTERN = Pattern.compile(MOBILE_REGEX);
 
-        if (mobile == null || mobile.isBlank()) return false;
+        if (mobile == null || mobile.isBlank())
+            return false;
         return MOBILE_PATTERN.matcher(mobile).matches();
     }
 
@@ -71,8 +72,4 @@ public class User {
         return card;
     }
 
-    public void spend(double amount, Merchant merch, User user){
-//        Transaction tran1 = new Transaction("T101", amount, merch.id, user.getCard());
-
-    }
 }

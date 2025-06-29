@@ -14,7 +14,7 @@ public class CreditCard {
     public CreditCard(String userId, String number) {
         if(userId == null || userId.isBlank())
             throw new InvalidCreditCardNumberException(number);
-        if(number != null || number.isBlank())
+        if(number == null || number.isBlank())
             throw new InvalidIdException(userId);
 
         this.userId = userId;
