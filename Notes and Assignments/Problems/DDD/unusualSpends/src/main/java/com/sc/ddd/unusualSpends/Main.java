@@ -2,9 +2,11 @@ package com.sc.ddd.unusualSpends;
 
 import com.sc.ddd.unusualSpends.DTO.SpendingByCategoryAndAmount;
 import com.sc.ddd.unusualSpends.DTO.TransactionWithCategory;
+import com.sc.ddd.unusualSpends.DTO.UnusualSpend;
 import com.sc.ddd.unusualSpends.config.UnusualSpendsConfig;
 import com.sc.ddd.unusualSpends.database.MerchantDB;
 import com.sc.ddd.unusualSpends.database.TransactionDB;
+import com.sc.ddd.unusualSpends.database.UserDB;
 import com.sc.ddd.unusualSpends.domain.Service.UnusualSpendsProcessor;
 import com.sc.ddd.unusualSpends.domain.entity.CreditCard;
 import com.sc.ddd.unusualSpends.domain.entity.Merchant;
@@ -13,6 +15,10 @@ import com.sc.ddd.unusualSpends.domain.entity.User;
 import com.sc.ddd.unusualSpends.domain.valueobject.SpendingCategory;
 import com.sc.ddd.unusualSpends.repository.MerchantRepository;
 import com.sc.ddd.unusualSpends.repository.TransactionRepository;
+import com.sc.ddd.unusualSpends.repository.UserRepository;
+import com.sc.ddd.unusualSpends.service.Formatter;
+import com.sc.ddd.unusualSpends.service.Impl.EmailCommunicator;
+import com.sc.ddd.unusualSpends.service.Impl.EmailFormatter;
 import com.sc.ddd.unusualSpends.service.TransactionService;
 
 import java.time.LocalDateTime;
@@ -30,8 +36,13 @@ public class Main {
         CreditCard cd1 = new CreditCard("101", "1234 5678 9012");
         CreditCard cd2 = new CreditCard("101", "1234 5678 9013");
 
+        UserDB userDB = new UserDB();
+        UserRepository userRepository = new UserRepository(userDB);
+
         User user = new User("101", "Akash", "akashhedau65@gmail.com", "8308985621",
                 List.of(cd1.getNumber(), cd2.getNumber()));
+
+        userRepository.addUser(user);
 
         // Merchants
         Merchant m1 = new Merchant("M1111", "VRL Travels", SpendingCategory.TRAVEL);
@@ -53,6 +64,10 @@ public class Main {
                 LocalDateTime.of(2025, Month.JUNE, 17, 0, 0));
         Transaction t4 = new Transaction("T4444", 12000, m2.getId(), cd2.getNumber(),
                 LocalDateTime.of(2025, Month.JULY, 18, 0, 0));
+        Transaction t5 = new Transaction("T4444", 40000, m2.getId(), cd2.getNumber(),
+                LocalDateTime.of(2025, Month.JULY, 18, 0, 0));
+        Transaction t6 = new Transaction("T4444", 120000, m2.getId(), cd2.getNumber(),
+                LocalDateTime.of(2025, Month.JULY, 18, 0, 0));
 
         TransactionDB tranDb = new TransactionDB();
         TransactionRepository transactionRepository = new TransactionRepository(tranDb);
@@ -60,6 +75,8 @@ public class Main {
         transactionRepository.addTransaction(t2);
         transactionRepository.addTransaction(t3);
         transactionRepository.addTransaction(t4);
+        transactionRepository.addTransaction(t5);
+        transactionRepository.addTransaction(t6);
 
 
         UnusualSpendsConfig unusualSpendsConfig = new UnusualSpendsConfig(50.0);
@@ -75,9 +92,21 @@ public class Main {
 
         UnusualSpendsProcessor usp = new UnusualSpendsProcessor();
 
-        System.out.println(usp.getUnusualSpending(
+        List<UnusualSpend> unusualSpends = usp.getUnusualSpending(
                 lastMontSpendingByCategoryAndAmount,
                 currentMontSpendingByCategoryAndAmount,
-                unusualSpendsConfig));
+                unusualSpendsConfig);
+
+        System.out.println(unusualSpends);
+
+        if(unusualSpends != null){
+
+            EmailFormatter emailFormatter = new EmailFormatter();
+            String formattedMessage = emailFormatter.formatMessage(unusualSpends, userRepository.getUserNameById(user.getId()));
+
+            EmailCommunicator emailCommunicator = new EmailCommunicator();
+//            emailCommunicator.communicate(userRepository.getUserContactById(user.getId()), "Unusual spending of" + unusualSpends.get(0).getAmount() +"detected!",formattedMessage);
+
+        }
     }
 }
