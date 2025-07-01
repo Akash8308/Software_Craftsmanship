@@ -6,6 +6,7 @@ import com.sc.ddd.unusualSpends.domain.entity.Transaction;
 import com.sc.ddd.unusualSpends.repository.MerchantRepository;
 import com.sc.ddd.unusualSpends.repository.TransactionRepository;
 
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -15,16 +16,16 @@ public class TransactionService {
 
     public final TransactionRepository transactionRepo;
     public final MerchantRepository merchantRepository;
-    public final List<TransactionWithCategory> transactionWithCategoryList;
 
 
     public TransactionService(TransactionRepository transactionRepo, MerchantRepository merchantRepository) {
         this.transactionRepo = transactionRepo;
         this.merchantRepository = merchantRepository;
-        this.transactionWithCategoryList = new ArrayList<>();
     }
 
     public List<TransactionWithCategory> createAndAddTransactionWithCategory(){
+        List<TransactionWithCategory> transactionWithCategoryList = new ArrayList<>();
+
         for(Transaction transaction : transactionRepo.getAllTransactions()){
             var category = merchantRepository.getMerchantCategoryByID(transaction.getMerchantId());
             var transactionWithCategory = new TransactionWithCategory(transaction, category);
@@ -34,18 +35,14 @@ public class TransactionService {
         return  transactionWithCategoryList;
     }
 
-    public List<TransactionWithCategory> getAllTransactionWithCategory(){
-        return this.transactionWithCategoryList;
-    }
-
     public List<SpendingByCategoryAndAmount> getSpendingByCategoryAndAmount(
             Set<String> creditCardIds,
-            String month,
+            Month month,
             List<TransactionWithCategory> transactionWithCategoriesList){
 
-        return transactionWithCategoryList.stream()
+        return transactionWithCategoriesList.stream()
                 .filter( transactionWithCategory ->
-                        Objects.equals(month, transactionWithCategory.getTransaction().getMonth()) &&
+                        month == transactionWithCategory.getTransaction().getMonth() &&
                                 creditCardIds.contains(transactionWithCategory.getTransaction().getCreditCardId())
                 )
                 .map( validTransaction ->

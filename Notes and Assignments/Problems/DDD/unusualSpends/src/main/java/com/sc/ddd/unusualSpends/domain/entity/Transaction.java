@@ -3,6 +3,7 @@ import com.sc.ddd.unusualSpends.exception.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Month;
 
 public class Transaction {
 
@@ -10,7 +11,7 @@ public class Transaction {
     private final double amount;
     private final String merchantId;
     private final String creditCardId;
-    private final LocalDate  timestamp;
+    private final LocalDateTime timestamp;
 
     public Transaction(String id, double amount, String merchantId, String creditCardId, LocalDateTime localDateTime) {
 
@@ -27,14 +28,14 @@ public class Transaction {
         this.amount = amount;
         this.merchantId = merchantId;
         this.creditCardId = creditCardId;
-        this.timestamp = LocalDate.now();
+        this.timestamp = localDateTime;
     }
 
     public String getId() {
         return id;
     }
 
-    public LocalDate getTimestamp() {
+    public LocalDateTime getTimestamp() {
         return timestamp;
     }
 
@@ -50,7 +51,7 @@ public class Transaction {
         return creditCardId;
     }
 
-    public String getMonth() {
-        return timestamp.getMonth().toString();
+    public Month getMonth() {
+        return timestamp.getMonth();
     }
 }

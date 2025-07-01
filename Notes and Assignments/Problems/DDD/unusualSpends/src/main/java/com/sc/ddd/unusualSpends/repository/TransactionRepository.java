@@ -16,7 +16,6 @@ public class TransactionRepository {
 
     public void addTransaction(Transaction transaction) {
         this.transactionDB.addTransaction(transaction);
-//        this.unusualSpendsProcessor.getUnusualSpending();
     }
 
     public List<Transaction> getAllTransactions() {

@@ -47,7 +47,7 @@ public class Main {
         // Merchants
         Merchant m1 = new Merchant("M1111", "VRL Travels", SpendingCategory.TRAVEL);
         Merchant m2 = new Merchant("M2222", "Aroma", SpendingCategory.FOOD);
-        Merchant m3 = new Merchant("M2222", "HP Petroleum", SpendingCategory.FUEL);
+        Merchant m3 = new Merchant("M3333", "HP Petroleum", SpendingCategory.FUEL);
 
         MerchantDB merchDb = new MerchantDB();
         MerchantRepository merchRepo = new MerchantRepository(merchDb);
@@ -56,17 +56,17 @@ public class Main {
         merchRepo.addMerchant(m3);
 
         // Transactions
-        Transaction t1 = new Transaction("T1111", 5000, m1.getId(), cd1.getNumber(),
+        Transaction t1 = new Transaction("1", 500, m1.getId(), cd1.getNumber(),
                 LocalDateTime.of(2025, Month.JUNE, 15, 0, 0));
-        Transaction t2 = new Transaction("T2222", 10000, m1.getId(), cd1.getNumber(),
-                LocalDateTime.of(2025, Month.JULY, 16, 0, 0));
-        Transaction t3 = new Transaction("T3333", 6000, m2.getId(), cd1.getNumber(),
+        Transaction t2 = new Transaction("2", 100, m2.getId(), cd1.getNumber(),
+                LocalDateTime.of(2025, Month.JUNE, 16, 0, 0));
+        Transaction t3 = new Transaction("3", 200, m3.getId(), cd1.getNumber(),
                 LocalDateTime.of(2025, Month.JUNE, 17, 0, 0));
-        Transaction t4 = new Transaction("T4444", 12000, m2.getId(), cd2.getNumber(),
+        Transaction t4 = new Transaction("4", 5000, m1.getId(), cd1.getNumber(),
                 LocalDateTime.of(2025, Month.JULY, 18, 0, 0));
-        Transaction t5 = new Transaction("T4444", 40000, m2.getId(), cd2.getNumber(),
+        Transaction t5 = new Transaction("5", 10000, m2.getId(), cd1.getNumber(),
                 LocalDateTime.of(2025, Month.JULY, 18, 0, 0));
-        Transaction t6 = new Transaction("T4444", 120000, m2.getId(), cd2.getNumber(),
+        Transaction t6 = new Transaction("6", 20000, m3.getId(), cd1.getNumber(),
                 LocalDateTime.of(2025, Month.JULY, 18, 0, 0));
 
         TransactionDB tranDb = new TransactionDB();
@@ -85,10 +85,17 @@ public class Main {
 
         List<TransactionWithCategory> transactionWithCategoryList = tranService.createAndAddTransactionWithCategory();
 
-        List<SpendingByCategoryAndAmount> lastMontSpendingByCategoryAndAmount = tranService.getSpendingByCategoryAndAmount(Set.of(cd1.getNumber()),
-                Month.JUNE.toString(), transactionWithCategoryList);
-        List<SpendingByCategoryAndAmount> currentMontSpendingByCategoryAndAmount = tranService.getSpendingByCategoryAndAmount(Set.of(cd1.getNumber()),
-                Month.JULY.toString(), transactionWithCategoryList);
+        List<SpendingByCategoryAndAmount> lastMontSpendingByCategoryAndAmount = tranService.getSpendingByCategoryAndAmount(
+                Set.of(cd1.getNumber()),
+                Month.JUNE,
+                transactionWithCategoryList
+        );
+
+        List<SpendingByCategoryAndAmount> currentMontSpendingByCategoryAndAmount = tranService.getSpendingByCategoryAndAmount(
+                Set.of(cd1.getNumber()),
+                Month.JULY,
+                transactionWithCategoryList
+        );
 
         UnusualSpendsProcessor usp = new UnusualSpendsProcessor();
 
@@ -105,7 +112,7 @@ public class Main {
             String formattedMessage = emailFormatter.formatMessage(unusualSpends, userRepository.getUserNameById(user.getId()));
 
             EmailCommunicator emailCommunicator = new EmailCommunicator();
-//            emailCommunicator.communicate(userRepository.getUserContactById(user.getId()), "Unusual spending of" + unusualSpends.get(0).getAmount() +"detected!",formattedMessage);
+            emailCommunicator.communicate(userRepository.getUserContactById(user.getId()), "Unusual spending of" + unusualSpends.get(0).getAmount() +"detected!",formattedMessage);
 
         }
     }

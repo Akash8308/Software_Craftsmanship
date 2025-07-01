@@ -2,9 +2,9 @@ package com.sc.ddd.unusualSpends.domain.valueobject;
 
 public enum SpendingCategory {
     FOOD,
-    GROCERIES,
+//    GROCERIES,
     FUEL,
-    ENTERTAINMENT,
-    UTILITY,
+//    ENTERTAINMENT,
+//    UTILITY,
     TRAVEL
 }
