@@ -16,6 +16,7 @@ import com.sc.ddd.unusualSpends.domain.valueobject.SpendingCategory;
 import com.sc.ddd.unusualSpends.repository.MerchantRepository;
 import com.sc.ddd.unusualSpends.repository.TransactionRepository;
 import com.sc.ddd.unusualSpends.repository.UserRepository;
+import com.sc.ddd.unusualSpends.service.Communicator;
 import com.sc.ddd.unusualSpends.service.Formatter;
 import com.sc.ddd.unusualSpends.service.Impl.EmailCommunicator;
 import com.sc.ddd.unusualSpends.service.Impl.EmailFormatter;
@@ -108,10 +109,10 @@ public class Main {
 
         if(unusualSpends != null){
 
-            EmailFormatter emailFormatter = new EmailFormatter();
+            Formatter emailFormatter = new EmailFormatter();
             String formattedMessage = emailFormatter.formatMessage(unusualSpends, userRepository.getUserNameById(user.getId()));
 
-            EmailCommunicator emailCommunicator = new EmailCommunicator();
+            Communicator emailCommunicator = new EmailCommunicator();
             emailCommunicator.communicate(userRepository.getUserContactById(user.getId()), "Unusual spending of" + unusualSpends.get(0).getAmount() +"detected!",formattedMessage);
 
         }
