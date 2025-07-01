@@ -33,40 +33,40 @@ public class Main {
         // System.out.println("Welcome to Unusual Spending Detection System");
 
         // CreditCards
-        CreditCard cd1 = new CreditCard("101", "1234 5678 9012");
-        CreditCard cd2 = new CreditCard("101", "1234 5678 9013");
+        CreditCard cred_1 = new CreditCard("Cred_1", "1234 5678 9012");
+        CreditCard cred_2 = new CreditCard("Cred_2", "1234 5678 9013");
 
         UserDB userDB = new UserDB();
         UserRepository userRepository = new UserRepository(userDB);
 
         User user = new User("101", "Akash", "akashhedau65@gmail.com", "8308985621",
-                List.of(cd1.getNumber(), cd2.getNumber()));
+                List.of(cred_1.getNumber(), cred_2.getNumber()));
 
         userRepository.addUser(user);
 
         // Merchants
-        Merchant m1 = new Merchant("M1111", "VRL Travels", SpendingCategory.TRAVEL);
-        Merchant m2 = new Merchant("M2222", "Aroma", SpendingCategory.FOOD);
-        Merchant m3 = new Merchant("M3333", "HP Petroleum", SpendingCategory.FUEL);
+        Merchant merch1 = new Merchant("merch1", "VRL Travels", SpendingCategory.TRAVEL);
+        Merchant merch_2 = new Merchant("merch_2", "Aroma", SpendingCategory.FOOD);
+        Merchant merch_3 = new Merchant("merch_3", "HP Petroleum", SpendingCategory.FUEL);
 
         MerchantDB merchDb = new MerchantDB();
         MerchantRepository merchRepo = new MerchantRepository(merchDb);
-        merchRepo.addMerchant(m1);
-        merchRepo.addMerchant(m2);
-        merchRepo.addMerchant(m3);
+        merchRepo.addMerchant(merch1);
+        merchRepo.addMerchant(merch_2);
+        merchRepo.addMerchant(merch_3);
 
         // Transactions
-        Transaction t1 = new Transaction("1", 500, m1.getId(), cd1.getNumber(),
+        Transaction t1 = new Transaction("1", 500, merch1.getId(), cred_1.getNumber(),
                 LocalDateTime.of(2025, Month.JUNE, 15, 0, 0));
-        Transaction t2 = new Transaction("2", 100, m2.getId(), cd1.getNumber(),
+        Transaction t2 = new Transaction("2", 100, merch_2.getId(), cred_1.getNumber(),
                 LocalDateTime.of(2025, Month.JUNE, 16, 0, 0));
-        Transaction t3 = new Transaction("3", 200, m3.getId(), cd1.getNumber(),
+        Transaction t3 = new Transaction("3", 200, merch_3.getId(), cred_1.getNumber(),
                 LocalDateTime.of(2025, Month.JUNE, 17, 0, 0));
-        Transaction t4 = new Transaction("4", 5000, m1.getId(), cd1.getNumber(),
+        Transaction t4 = new Transaction("4", 5000, merch1.getId(), cred_1.getNumber(),
                 LocalDateTime.of(2025, Month.JULY, 18, 0, 0));
-        Transaction t5 = new Transaction("5", 10000, m2.getId(), cd1.getNumber(),
+        Transaction t5 = new Transaction("5", 10000, merch_2.getId(), cred_1.getNumber(),
                 LocalDateTime.of(2025, Month.JULY, 18, 0, 0));
-        Transaction t6 = new Transaction("6", 20000, m3.getId(), cd1.getNumber(),
+        Transaction t6 = new Transaction("6", 20000, merch_3.getId(), cred_1.getNumber(),
                 LocalDateTime.of(2025, Month.JULY, 18, 0, 0));
 
         TransactionDB tranDb = new TransactionDB();
@@ -86,13 +86,13 @@ public class Main {
         List<TransactionWithCategory> transactionWithCategoryList = tranService.createAndAddTransactionWithCategory();
 
         List<SpendingByCategoryAndAmount> lastMontSpendingByCategoryAndAmount = tranService.getSpendingByCategoryAndAmount(
-                Set.of(cd1.getNumber()),
+                Set.of(cred_1.getNumber()),
                 Month.JUNE,
                 transactionWithCategoryList
         );
 
         List<SpendingByCategoryAndAmount> currentMontSpendingByCategoryAndAmount = tranService.getSpendingByCategoryAndAmount(
-                Set.of(cd1.getNumber()),
+                Set.of(cred_1.getNumber()),
                 Month.JULY,
                 transactionWithCategoryList
         );
