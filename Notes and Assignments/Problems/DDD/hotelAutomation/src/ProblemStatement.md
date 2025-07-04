@@ -34,8 +34,8 @@ switched OFF and AC needs to be switched ON
   * Behavior: get/set, addCorridor(), addSubCorridor()
 
 * Corridor
- * Attributes: id: int, name: String, light: Light, List<ac>: AC, time: LocalTime
- * Behavior: get/set, turnAcON(), turnAcOff(), turnLightON(), turnLightOff()
+  * Attributes: id: int, name: String, light: Light, List<ac>: AC, time: LocalTime
+  * Behavior: get/set, turnAcON(), turnAcOff(), turnLightON(), turnLightOff()
 
 [//]: # (* MainCorridor)
 
