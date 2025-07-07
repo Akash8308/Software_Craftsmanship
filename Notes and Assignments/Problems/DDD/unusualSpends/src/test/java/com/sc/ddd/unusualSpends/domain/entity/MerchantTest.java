@@ -1,6 +1,7 @@
 package com.sc.ddd.unusualSpends.domain.entity;
 
 import com.sc.ddd.unusualSpends.domain.valueobject.SpendingCategory;
+import com.sc.ddd.unusualSpends.exception.InvalidCategoryException;
 import com.sc.ddd.unusualSpends.exception.InvalidIdException;
 import com.sc.ddd.unusualSpends.exception.InvalidNameException;
 import org.junit.jupiter.api.Test;
@@ -70,5 +71,16 @@ class MerchantTest {
         assertEquals(expectedExceptionMessage, exceptionObj.getMessage());
     }
 
-
+//    @Test
+//    void shouldInvalidCategoryExceptionWhenCategoryIsInvalid() {
+//        String id = "101";
+//        String merchName = "Akash";
+//        SpendingCategory spendingCategory = (SpendingCategory.ENTERTAINMENT).toString();
+//        String expectedExceptionMessage = "Invalid Spending Category: ENTERTAINMENT";
+//
+//        var exceptionObj = assertThrows(InvalidCategoryException.class,() -> new Merchant(id, merchName, spendingCategory));
+//
+//        assertEquals(exceptionObj.getMessage(), expectedExceptionMessage);
+//    }
+    
 }
