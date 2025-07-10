@@ -82,5 +82,5 @@ class MerchantTest {
 //
 //        assertEquals(exceptionObj.getMessage(), expectedExceptionMessage);
 //    }
-    
+
 }
