@@ -26,5 +26,5 @@ class CreditCardTest {
         var transactions = creaditCard.getTransactionIds();
         assertTrue(transactions.isEmpty());
     }
-    
+
 }
