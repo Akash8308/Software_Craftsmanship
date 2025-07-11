@@ -17,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TransactionServiceTest {
 
+    // TODO: complete shouldCreateAndAddTransactionWithCategory test
     @Test
     void shouldCreateAndAddTransactionWithCategory(){
         var merchant1 = new Merchant("M01", "Akash", SpendingCategory.FOOD);
@@ -60,6 +61,8 @@ class TransactionServiceTest {
                 tranWithCategory4
         );
 
-        assertTrue(transactionWithCategoryList.containsAll(expectedTransactionWithCategoryList));
+//        assertEquals(expectedTransactionWithCategoryList, transactionWithCategoryList);
+//        assertEquals(expectedTransactionWithCategoryList, transactionWithCategoryList);
+        assertTrue(expectedTransactionWithCategoryList.containsAll(transactionWithCategoryList));
     }
 }
