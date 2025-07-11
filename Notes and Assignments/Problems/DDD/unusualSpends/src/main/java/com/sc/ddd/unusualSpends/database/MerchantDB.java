@@ -33,4 +33,5 @@ public class MerchantDB {
         Merchant merchant = getMerchantById(merchantId);
         return merchant.getCategory();
     }
+
 }

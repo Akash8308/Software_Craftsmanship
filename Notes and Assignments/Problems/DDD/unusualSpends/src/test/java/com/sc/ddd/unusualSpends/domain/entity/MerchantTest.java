@@ -23,6 +23,7 @@ class MerchantTest {
         assertEquals(spendingCategory, merch.getCategory() );
     }
 
+    // TODO: Fix excshouldThrowInvalidIdExceptionWhenIdIsNullException Test
     @Test
     void shouldThrowInvalidIdExceptionWhenIdIsNull(){
         String id = null;
@@ -47,6 +48,7 @@ class MerchantTest {
         assertThrows(InvalidIdException.class, () -> new Merchant(id, merchName, spendingCategory));
     }
 
+    // TODO: Fix shouldThrowInvalidNameExceptionWhenNameIsNull Test
     @Test
     void shouldThrowInvalidNameExceptionWhenNameIsNull(){
         String id = "101";
