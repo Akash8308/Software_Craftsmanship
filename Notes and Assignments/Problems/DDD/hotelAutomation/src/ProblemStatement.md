@@ -26,31 +26,16 @@ switched OFF and AC needs to be switched ON
 
 ## Classes
  * Hotel
-   * Attributes: id : int, name: String, floors: Floor
+   * Attributes: id : int, name: String, floors: List<Floor>
    * Behavior: get/set,
  
 * Floor
-  * Attributes: id: int, name: String, mainCorridors: List<MainCorridor>, subCorridors: List<SubCorridor>
+  * Attributes: id: int, mainCorridors: List<MainCorridor>, subCorridors: List<SubCorridor>
   * Behavior: get/set, addCorridor(), addSubCorridor()
 
 * Corridor
   * Attributes: id: int, name: String, light: Light, List<ac>: AC, time: LocalTime
   * Behavior: get/set, turnAcON(), turnAcOff(), turnLightON(), turnLightOff()
-
-[//]: # (* MainCorridor)
-
-[//]: # (  * Attributes: id: int, name: String, light: Light, List<ac>: AC, time: LocalTime)
-
-[//]: # (  * Behavior: get/set, turnAcON&#40;&#41;, turnAcOff&#40;&#41;, turnLightON&#40;&#41;, turnLightOff&#40;&#41;)
-
-[//]: # (All the lights in all the main corridors need to be switched ON between 6PM to 6AM,)
-[//]: # (which is the Night Time slot)
-
-[//]: # (* SubCorridor extends Corridor)
-
-[//]: # (When a motion is detected in one of the sub corridors the corresponding lights need to)
-
-[//]: # (be switched ON between 6PM to 6AM &#40;Night Time slot&#41;)
 
 * Light
   * Attributes: id: String, power: POWER_STATUS, countDownSinceLastMotionDetected: LocalTime
