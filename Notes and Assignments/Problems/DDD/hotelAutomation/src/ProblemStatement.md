@@ -40,14 +40,10 @@ switched OFF and AC needs to be switched ON
 * Light
   * Attributes: id: String, power: POWER_STATUS, countDownSinceLastMotionDetected: LocalTime
   * Behavior: get/set,
-  
-[//]: # ( Both main and sub corridor lights consume 5 units of power when ON)
 
 * AC 
   * Attributes: id: String, power: POWER_STATUS = POWER_STATUS.ON, countDownSinceLastMotionDetected: LocalTime
   * Behavior: get/set, 
-
-[//]: # (Both main and sub corridor ACs consume 10 units of power when ON)
 
 * MotionDetector
   * Attributes: id: int, name: String, input : bool 
