@@ -17,6 +17,7 @@ class CreditCardTest {
         assertEquals(creaditcardID, creaditCard.getNumber());
     }
 
+    @Test
     void shouldCreateObjectWithEmptyTransactionList(){
         var userId = "101";
         var creaditcardID = "1234 5678 1234";

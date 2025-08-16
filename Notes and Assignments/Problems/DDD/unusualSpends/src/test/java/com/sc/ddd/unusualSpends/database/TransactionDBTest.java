@@ -5,6 +5,7 @@ import com.sc.ddd.unusualSpends.domain.entity.Transaction;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -27,13 +28,14 @@ class TransactionDBTest {
         Transaction t2 = new Transaction("T02", 200, "M01", "C01", LocalDateTime.now());
         Transaction t3 = new Transaction("T03", 300, "M01", "C01", LocalDateTime.now());
 
+        var expectedTransactions = List.of(t1,t2,t3);
         transDb.addTransaction(t1);
         transDb.addTransaction(t2);
         transDb.addTransaction(t3);
 
         var transactions = transDb.getTransactions();
 
-        assertTrue(transactions.isEmpty());
+        assertTrue(transactions.containsAll(expectedTransactions));
     }
 
 

@@ -29,7 +29,7 @@ class MerchantTest {
         String id = null;
         String merchName = "Akash";
         SpendingCategory spendingCategory = SpendingCategory.TRAVEL;
-        String expectedExceptionMessage = "Invalid ID: null";
+        String expectedExceptionMessage = "Invalid id: null";
 
         var exceptionObj = assertThrows(InvalidIdException.class , () -> new Merchant(id, merchName, spendingCategory));
 
