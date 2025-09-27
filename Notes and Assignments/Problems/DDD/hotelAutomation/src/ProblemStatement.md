@@ -31,7 +31,7 @@ switched OFF and AC needs to be switched ON
  
 * Floor
   * Attributes: id: int, mainCorridors: List<MainCorridor>, subCorridors: List<SubCorridor>
-  * Behavior: get/set, addCorridor(), addSubCorridor()
+  * Behavior: get/set, addCorridor(), addSubCorridor(), removeCorridor(), removeSubCorridor()
 
 * Corridor
   * Attributes: id: int, name: String, light: Light, List<ac>: AC, time: LocalTime
