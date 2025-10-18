@@ -1,10 +1,9 @@
 package com.sc.hotelAutomation.dto;
 
 public class MotionDetector {
-//  * Behavior: get/set(), detectMotion()
     int id;
     String name;
-    Boolean input;
+    boolean input;
 
     public MotionDetector(String name, int id) {
         this.name = name;
@@ -33,5 +32,9 @@ public class MotionDetector {
 
     public void setInput(Boolean input) {
         this.input = input;
+    }
+
+    public boolean detectMotion(){
+        return true;
     }
 }
